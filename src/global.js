@@ -1,1 +1,1 @@
-export const API = 'https://user-app-backend-bmmu.onrender.com'
+export const API = 'https://user-app-backend-bmmu.onrender.com/users'
