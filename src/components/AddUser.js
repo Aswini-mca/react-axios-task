@@ -108,20 +108,6 @@ export function AddUser() {
               <div className='text-danger m-2'>*{formik.errors.age}</div>
             ) : null}
           </div>
-          <div className='mb-3' title="Phone">
-            <input
-              className='form-control'
-              type='text'
-              placeholder='Phone Number'
-              name='phone'
-              value={formik.values.phone}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.touched.phone && formik.errors.phone ? (
-              <div className='text-danger m-2'>*{formik.errors.phone}</div>
-            ) : null}
-          </div>
           <div className='mb-3' title="E-mail">
             <input
               className='form-control'
@@ -134,6 +120,20 @@ export function AddUser() {
             />
             {formik.touched.email && formik.errors.email ? (
               <div className='text-danger m-2'>*{formik.errors.email}</div>
+            ) : null}
+          </div>
+          <div className='mb-3' title="Phone">
+            <input
+              className='form-control'
+              type='text'
+              placeholder='Phone Number'
+              name='phone'
+              value={formik.values.phone}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.phone && formik.errors.phone ? (
+              <div className='text-danger m-2'>*{formik.errors.phone}</div>
             ) : null}
           </div>
           <div className='mb-3' title='Address'>

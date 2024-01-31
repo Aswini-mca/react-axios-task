@@ -18,8 +18,11 @@ export function EditUser() {
       );
   }, [userid]);
 
-  return data ? <Edituser userdata={data} /> : "Loading..."
+  return data ? <Edituser userdata={data} /> : <div class="spinner-border text-secondary m-5" role="status">
+    <span class="visually-hidden">Loading...</span> </div>
+
 }
+
 function Edituser({ userdata }) {
 
   const { userid } = useParams();
@@ -39,7 +42,7 @@ function Edituser({ userdata }) {
       id: userdata.id,
       name: userdata.name,
       age: userdata.age,
-      email: userdata.age,
+      email: userdata.email,
       phone: userdata.phone,
       address: userdata.address
     },
@@ -65,7 +68,7 @@ function Edituser({ userdata }) {
   return (
     <div>
       <div className="mb-4">
-      <h2 className="container m-3 text-center">Edit this input fields and click Update button</h2>
+        <h2 className="container m-3 text-center">Edit this input fields and click Update button</h2>
         <Link className='text-dark head' to={'/'}>Home</Link>
       </div>
       <div className='container'>
@@ -112,6 +115,20 @@ function Edituser({ userdata }) {
               <div className='text-danger m-2'>*{formik.errors.age}</div>
             ) : null}
           </div>
+          <div className='mb-3' title="E-mail">
+            <input
+              className='form-control'
+              type='email'
+              placeholder='E-Mail'
+              name='email'
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.email && formik.errors.email ? (
+              <div className='text-danger m-2'>*{formik.errors.email}</div>
+            ) : null}
+          </div>
           <div className='mb-3' title="Phone">
             <input
               className='form-control'
@@ -124,20 +141,6 @@ function Edituser({ userdata }) {
             />
             {formik.touched.phone && formik.errors.phone ? (
               <div className='text-danger m-2'>*{formik.errors.phone}</div>
-            ) : null}
-          </div>
-          <div className='mb-3' title="E-mail">
-            <input
-              className='form-control'
-              type='email'
-              placeholder='E-mail'
-              name='email'
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div className='text-danger m-2'>*{formik.errors.email}</div>
             ) : null}
           </div>
           <div className='mb-3' title='Address'>
