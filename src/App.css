@@ -7,16 +7,25 @@ body{
 .User-list{
   text-align: center;
   font-family:'Times New Roman', Times, serif;
+  margin: 20px;
 }
 .user-card{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 2em;
+  justify-content: space-around;
+}
+.head{
+  font-size: larger;
+}
+.list-align{
+  text-align: justify;
 }
 button{
   margin: 1em;
 }
 img{
   margin: 20px;
+}
+a{
+  text-decoration: none;
 }
