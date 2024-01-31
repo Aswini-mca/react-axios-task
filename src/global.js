@@ -1,1 +1,1 @@
-export const API = 'http://localhost:9000/users'
+export const API = 'https://user-app-backend-bmmu.onrender.com'
