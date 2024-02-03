@@ -7,6 +7,8 @@ import { API } from '../global.js'
 export function User() {
 
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
 
   const getUsers = async () => {
     try {
@@ -15,20 +17,31 @@ export function User() {
     } catch (error) {
       console.error("Error fetching users:", error);
     }
+    finally {
+      setLoading(false);
+    }
   };
 
-  useEffect(() => {getUsers();}, []);
+  useEffect(() => { getUsers(); }, []);
 
   const navigate = useNavigate();
+  
+  const spinner = () => {
+    if (loading)
+      return (
+        <div class="spinner-border text-secondary m-4" role="status">
+          <span class="visually-hidden">Loading...</span> </div>
+      )
+  }
 
   return (
     <div>
-    <div>
-    <h4 className="container m-3 text-center">Welcome to our User List Page, where you can explore and manage your community effortlessly.</h4>
-    <Link className='text-dark head' to={'/'}>Home</Link>
-    </div>
-    <button className='btn btn-success' onClick={() => navigate("/add-user")}>Add User</button>
-
+      <div>
+        <h4 className="container m-3 text-center">Welcome to our User List Page, where you can explore and manage your community effortlessly.</h4>
+        <Link className='text-dark head' to={'/'}>Home</Link>
+      </div>
+      <button className='btn btn-success' onClick={() => navigate("/add-user")}>Add User</button>
+      <p>{spinner()}</p>
       <div className='user-card'>
         {Array.isArray(data) && data.map((user) => {
           return (
